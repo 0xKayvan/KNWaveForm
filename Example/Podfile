@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'KNWaveForm_Example' do
+  pod 'KNWaveForm', :path => '../'
+
+  target 'KNWaveForm_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
