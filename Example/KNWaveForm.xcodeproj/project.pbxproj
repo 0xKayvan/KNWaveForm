@@ -15,6 +15,7 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		EAFB10D613C515CF37D58B8C /* Pods_KNWaveForm_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 258F3A91AC6494A3DA81BE70 /* Pods_KNWaveForm_Example.framework */; };
+		FA07FBA4246593C000EC7C0E /* eddy_-_01_-_Pure_Adrenaline.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA07FBA3246593C000EC7C0E /* eddy_-_01_-_Pure_Adrenaline.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,9 +29,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		247F11D205BB4DD71703DFBF /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		247F11D205BB4DD71703DFBF /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		258F3A91AC6494A3DA81BE70 /* Pods_KNWaveForm_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KNWaveForm_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		42E75F4A5272AC0F94B388A1 /* KNWaveForm.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = KNWaveForm.podspec; path = ../KNWaveForm.podspec; sourceTree = "<group>"; };
+		42E75F4A5272AC0F94B388A1 /* KNWaveForm.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = KNWaveForm.podspec; path = ../KNWaveForm.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		5C92FE87A415F3DC4FB11D83 /* Pods-KNWaveForm_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KNWaveForm_Example.debug.xcconfig"; path = "Target Support Files/Pods-KNWaveForm_Example/Pods-KNWaveForm_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* KNWaveForm_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KNWaveForm_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -46,7 +47,8 @@
 		94A91E9D83D21CAF4054E83D /* Pods-KNWaveForm_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KNWaveForm_Example.release.xcconfig"; path = "Target Support Files/Pods-KNWaveForm_Example/Pods-KNWaveForm_Example.release.xcconfig"; sourceTree = "<group>"; };
 		A56F4B6125C4B4C5721B38A7 /* Pods-KNWaveForm_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KNWaveForm_Tests.release.xcconfig"; path = "Target Support Files/Pods-KNWaveForm_Tests/Pods-KNWaveForm_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		B7E125A7A98FA22CB64DAA2B /* Pods-KNWaveForm_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KNWaveForm_Tests.debug.xcconfig"; path = "Target Support Files/Pods-KNWaveForm_Tests/Pods-KNWaveForm_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		F1CA52E3D050F60D9628326F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		F1CA52E3D050F60D9628326F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		FA07FBA3246593C000EC7C0E /* eddy_-_01_-_Pure_Adrenaline.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "eddy_-_01_-_Pure_Adrenaline.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,13 +79,13 @@
 				B7E125A7A98FA22CB64DAA2B /* Pods-KNWaveForm_Tests.debug.xcconfig */,
 				A56F4B6125C4B4C5721B38A7 /* Pods-KNWaveForm_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				FA07FBA2246593C000EC7C0E /* Assets */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for KNWaveForm */,
 				607FACE81AFB9204008FA782 /* Tests */,
@@ -160,6 +162,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FA07FBA2246593C000EC7C0E /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				FA07FBA3246593C000EC7C0E /* eddy_-_01_-_Pure_Adrenaline.mp3 */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -213,10 +223,12 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 226J4KS72K;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 226J4KS72K;
 						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -227,6 +239,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -246,6 +259,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA07FBA4246593C000EC7C0E /* eddy_-_01_-_Pure_Adrenaline.mp3 in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
@@ -478,7 +492,9 @@
 			baseConfigurationReference = 5C92FE87A415F3DC4FB11D83 /* Pods-KNWaveForm_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 226J4KS72K;
 				INFOPLIST_FILE = KNWaveForm/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
@@ -493,7 +509,9 @@
 			baseConfigurationReference = 94A91E9D83D21CAF4054E83D /* Pods-KNWaveForm_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 226J4KS72K;
 				INFOPLIST_FILE = KNWaveForm/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
@@ -507,6 +525,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B7E125A7A98FA22CB64DAA2B /* Pods-KNWaveForm_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 226J4KS72K;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -529,6 +548,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A56F4B6125C4B4C5721B38A7 /* Pods-KNWaveForm_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 226J4KS72K;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",

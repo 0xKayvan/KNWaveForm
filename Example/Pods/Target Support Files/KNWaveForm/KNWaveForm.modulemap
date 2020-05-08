@@ -1,0 +1,6 @@
+framework module KNWaveForm {
+  umbrella header "KNWaveForm-umbrella.h"
+
+  export *
+  module * { export * }
+}

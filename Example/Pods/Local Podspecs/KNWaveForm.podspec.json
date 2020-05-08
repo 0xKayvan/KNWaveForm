@@ -1,0 +1,22 @@
+{
+  "name": "KNWaveForm",
+  "version": "0.1.0",
+  "summary": "A short description of KNWaveForm.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Kayvan Nouri/KNWaveForm",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Kayvan Nouri": "alternatiph@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/Kayvan Nouri/KNWaveForm.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "KNWaveForm/Classes/**/*"
+}

@@ -1,0 +1,16 @@
+PODS:
+  - KNWaveForm (0.1.0)
+
+DEPENDENCIES:
+  - KNWaveForm (from `../`)
+
+EXTERNAL SOURCES:
+  KNWaveForm:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  KNWaveForm: 395a2276def12dd1577d3371c5f25dafc51dfba7
+
+PODFILE CHECKSUM: e451effc1e1c9b7b2c0179c896da7b68e488b1e0
+
+COCOAPODS: 1.8.4

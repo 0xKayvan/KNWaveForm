@@ -7,17 +7,32 @@
 //
 
 import UIKit
+import AVFoundation
+import KNWaveForm
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var waveform: WaveForm!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let url = Bundle.main.url(forResource: "eddy_-_01_-_Pure_Adrenaline", withExtension: "mp3")!
+        let asset = AVAsset(url: url)
+        let config = WaveformConfiguration(size: self.waveform.bounds.size, color: UIColor.gray, progressColor: UIColor.red, backgroundColor: UIColor.white, position: WaveformPosition.middle, style: WaveformStyle.striped(period: 3), scale: 1, borderWidth: 0, borderColor: UIColor.clear, paddingFactor: nil)
+        waveform.render(for: asset, configuration: config)
+    }
+    
+    
+    @IBAction func randomProgress(_ sender: Any) {
+        let random = Double.random(in: 0.0...1.0)
+        self.waveform.progress(to: CGFloat(random))
     }
 
 }
