@@ -19,6 +19,7 @@ Pod::Spec.new do |s|
 
   s.description      = <<-DESC
 #TODO: Add long description of the pod here.
+KNWaveForm is a swift library to generate a waveform sample image of audio files.
                        DESC
 
   s.homepage         = 'https://github.com/alternatiph/KNWaveForm'
@@ -39,4 +40,6 @@ Pod::Spec.new do |s|
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
+  
+  s.swift_version = '4.2'
 end
