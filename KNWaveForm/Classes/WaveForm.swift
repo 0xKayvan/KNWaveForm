@@ -22,9 +22,15 @@ public enum WaveformStyle {
 }
 
 
+protocol WaveFormProtocol {
+    func didFinishRendering()
+    func renderingFailed()
+}
+
 public class WaveForm: UIView {
     
     private var config: WaveformConfiguration?
+    private var delegate: WaveFormProtocol?
     
     lazy var waveformImageView: UIImageView = {
         let imageview = UIImageView(frame: CGRect.zero)
@@ -91,12 +97,27 @@ public class WaveForm: UIView {
                 print("\(configuration.numberofSamples)/\(sampling.samples.count)")
                 print("Sampled in \(String(format:"%.3f s",samplingDuration))")
                 print("Drawed in \(String(format:"%.3f s",drawingDuration))")
+                
             }, onFailure: { (error, identifier) in
                 
             }, identifiedBy: identifier)
         }
     }
     
+    
+    public func renderARandomSample(configuration: WaveformConfiguration) {
+        let sampleMax: Float = 1.0
+        var samples = [Float]()
+        for _ in 0...configuration.numberofSamples {
+            samples.append(Float.random(in: 0...1))
+        }
+        let sampling = (samples: samples, sampleMax: sampleMax)
+        self.waveformImageView.frame.size = self.frame.size
+        self.progressWaveformImageView.frame.size = self.frame.size
+        self.clipping.frame.size = CGSize(width: CGFloat(0.0), height: self.frame.size.height)
+        self.waveformImageView.image = WaveFormDrawer.image(with: sampling, and: configuration, isHighlight: false)
+        self.progressWaveformImageView.image = WaveFormDrawer.image(with: sampling, and: configuration, isHighlight: true)
+    }
     
     public func progress(to percentage: CGFloat) {
         let x: CGFloat = 0.0
