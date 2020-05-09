@@ -29,7 +29,7 @@ public protocol WaveFormDelegate {
 
 public class WaveForm: UIView {
     
-    var delegate: WaveFormDelegate?
+    public var delegate: WaveFormDelegate?
     
     private var config: WaveformConfiguration?
     
