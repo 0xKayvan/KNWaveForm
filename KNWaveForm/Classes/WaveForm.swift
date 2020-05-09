@@ -22,15 +22,16 @@ public enum WaveformStyle {
 }
 
 
-public protocol WaveFormProtocol {
+public protocol WaveFormDelegate {
     func didFinishRendering(identifier: String?)
     func samplingFailed(error: Error, identifier: String?)
 }
 
 public class WaveForm: UIView {
     
+    var delegate: WaveFormDelegate?
+    
     private var config: WaveformConfiguration?
-    private var delegate: WaveFormProtocol?
     
     lazy var waveformImageView: UIImageView = {
         let imageview = UIImageView(frame: CGRect.zero)
