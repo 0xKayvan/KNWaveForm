@@ -23,8 +23,8 @@ public enum WaveformStyle {
 
 
 protocol WaveFormProtocol {
-    func didFinishRendering()
-    func renderingFailed()
+    func didFinishRendering(identifier: String?)
+    func samplingFailed(error: Error, identifier: String?)
 }
 
 public class WaveForm: UIView {
@@ -98,8 +98,9 @@ public class WaveForm: UIView {
                 print("Sampled in \(String(format:"%.3f s",samplingDuration))")
                 print("Drawed in \(String(format:"%.3f s",drawingDuration))")
                 
+                self.delegate?.didFinishRendering(identifier: identifier)
             }, onFailure: { (error, identifier) in
-                
+                self.delegate?.samplingFailed(error: error, identifier: identifier)
             }, identifiedBy: identifier)
         }
     }
