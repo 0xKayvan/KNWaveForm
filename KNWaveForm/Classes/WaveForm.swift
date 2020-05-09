@@ -22,7 +22,7 @@ public enum WaveformStyle {
 }
 
 
-protocol WaveFormProtocol {
+public protocol WaveFormProtocol {
     func didFinishRendering(identifier: String?)
     func samplingFailed(error: Error, identifier: String?)
 }
