@@ -121,6 +121,15 @@ public class WaveForm: UIView {
         self.progressWaveformImageView.image = WaveFormDrawer.image(with: sampling, and: configuration, isHighlight: true)
     }
     
+    public func render(with samples:[Float], sampleMax: Float, configuration: WaveformConfiguration) {
+        let sampling = (samples: samples, sampleMax: sampleMax)
+        self.waveformImageView.frame.size = self.frame.size
+        self.progressWaveformImageView.frame.size = self.frame.size
+        self.clipping.frame.size = CGSize(width: CGFloat(0.0), height: self.frame.size.height)
+        self.waveformImageView.image = WaveFormDrawer.image(with: sampling, and: configuration, isHighlight: false)
+        self.progressWaveformImageView.image = WaveFormDrawer.image(with: sampling, and: configuration, isHighlight: true)
+    }
+    
     public func progress(to percentage: CGFloat) {
         let x: CGFloat = 0.0
         let y: CGFloat = 0.0
