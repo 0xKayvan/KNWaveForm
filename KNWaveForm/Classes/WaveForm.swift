@@ -87,9 +87,9 @@ public class WaveForm: UIView {
                 let samplingDuration = CFAbsoluteTimeGetCurrent() - samplingStartTime
                 
                 let drawingStartTime = CFAbsoluteTimeGetCurrent()
-                self.waveformImageView.frame.size = self.frame.size
-                self.progressWaveformImageView.frame.size = self.frame.size
-                self.clipping.frame.size = CGSize(width: CGFloat(0.0), height: self.frame.size.height)
+                self.waveformImageView.frame.size = configuration.size
+                self.progressWaveformImageView.frame.size = configuration.size
+                self.clipping.frame.size = CGSize(width: CGFloat(0.0), height: configuration.size.height)
                 
                 self.waveformImageView.image = WaveFormDrawer.image(with: sampling, and: configuration, isHighlight: false)
                 self.progressWaveformImageView.image = WaveFormDrawer.image(with: sampling, and: configuration, isHighlight: true)
@@ -114,18 +114,18 @@ public class WaveForm: UIView {
             samples.append(Float.random(in: 0...1))
         }
         let sampling = (samples: samples, sampleMax: sampleMax)
-        self.waveformImageView.frame.size = self.frame.size
-        self.progressWaveformImageView.frame.size = self.frame.size
-        self.clipping.frame.size = CGSize(width: CGFloat(0.0), height: self.frame.size.height)
+        self.waveformImageView.frame.size = configuration.size
+        self.progressWaveformImageView.frame.size = configuration.size
+        self.clipping.frame.size = CGSize(width: CGFloat(0.0), height: configuration.size.height)
         self.waveformImageView.image = WaveFormDrawer.image(with: sampling, and: configuration, isHighlight: false)
         self.progressWaveformImageView.image = WaveFormDrawer.image(with: sampling, and: configuration, isHighlight: true)
     }
     
     public func render(with samples:[Float], sampleMax: Float, configuration: WaveformConfiguration) {
         let sampling = (samples: samples, sampleMax: sampleMax)
-        self.waveformImageView.frame.size = self.frame.size
-        self.progressWaveformImageView.frame.size = self.frame.size
-        self.clipping.frame.size = CGSize(width: CGFloat(0.0), height: self.frame.size.height)
+        self.waveformImageView.frame.size = configuration.size
+        self.progressWaveformImageView.frame.size = configuration.size
+        self.clipping.frame.size = CGSize(width: CGFloat(0.0), height: configuration.size.height)
         self.waveformImageView.image = WaveFormDrawer.image(with: sampling, and: configuration, isHighlight: false)
         self.progressWaveformImageView.image = WaveFormDrawer.image(with: sampling, and: configuration, isHighlight: true)
     }
