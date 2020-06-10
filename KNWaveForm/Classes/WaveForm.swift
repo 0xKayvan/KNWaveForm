@@ -25,6 +25,7 @@ public enum WaveformStyle {
 public protocol WaveFormDelegate {
     func didFinishRendering(identifier: String?)
     func samplingFailed(error: Error, identifier: String?)
+    func didScrollTo(percentage: CGFloat)
 }
 
 public class WaveForm: UIView {
@@ -32,6 +33,8 @@ public class WaveForm: UIView {
     public var delegate: WaveFormDelegate?
     
     private var config: WaveformConfiguration?
+    
+    private var panGestureRecognizer: UIPanGestureRecognizer!
     
     lazy var waveformImageView: UIImageView = {
         let imageview = UIImageView(frame: CGRect.zero)
@@ -70,8 +73,28 @@ public class WaveForm: UIView {
         clipping.addSubview(progressWaveformImageView)
         addSubview(clipping)
         clipsToBounds = true
+        
+        
+        self.panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
+        self.addGestureRecognizer(self.panGestureRecognizer)
+        self.isUserInteractionEnabled = true
     }
     
+    @objc private func handlePan(recognizer: UIPanGestureRecognizer) {
+        let velocityX = recognizer.velocity(in: self).x
+        if velocityX == 0 { return }
+        let locationX = recognizer.location(in: self).x
+        let width = self.frame.size.width
+        let percentage = max(min((locationX / width), 1.0), 0.0) * 100.0
+        switch recognizer.state {
+        case .began, .changed:
+            self.progress(to: percentage)
+        case .ended:
+            self.delegate?.didScrollTo(percentage: percentage)
+        default:
+            break
+        }
+    }
     
     public func render(for asset: AVAsset, configuration: WaveformConfiguration, and identifier: String? = nil) {
         let audioTracks:[AVAssetTrack] = asset.tracks(withMediaType: AVMediaType.audio)
@@ -79,25 +102,25 @@ public class WaveForm: UIView {
         if let track:AVAssetTrack = audioTracks.first {
             let timeRange:CMTimeRange? = nil
             
-            let samplingStartTime = CFAbsoluteTimeGetCurrent()
+//            let samplingStartTime = CFAbsoluteTimeGetCurrent()
             
             SamplesExtractor.samples(audioTrack: track, timeRange: timeRange, desiredNumberOfSamples: configuration.numberofSamples, onSuccess: { (samples, sampleMax, identifier) in
                 
                 let sampling = (samples: samples, sampleMax: sampleMax)
-                let samplingDuration = CFAbsoluteTimeGetCurrent() - samplingStartTime
+//                let samplingDuration = CFAbsoluteTimeGetCurrent() - samplingStartTime
                 
-                let drawingStartTime = CFAbsoluteTimeGetCurrent()
+//                let drawingStartTime = CFAbsoluteTimeGetCurrent()
                 self.waveformImageView.frame.size = configuration.size
                 self.progressWaveformImageView.frame.size = configuration.size
                 self.clipping.frame.size = CGSize(width: CGFloat(0.0), height: configuration.size.height)
                 
                 self.waveformImageView.image = WaveFormDrawer.image(with: sampling, and: configuration, isHighlight: false)
                 self.progressWaveformImageView.image = WaveFormDrawer.image(with: sampling, and: configuration, isHighlight: true)
-                let drawingDuration = CFAbsoluteTimeGetCurrent() - drawingStartTime
+//                let drawingDuration = CFAbsoluteTimeGetCurrent() - drawingStartTime
                 
-                print("\(configuration.numberofSamples)/\(sampling.samples.count)")
-                print("Sampled in \(String(format:"%.3f s",samplingDuration))")
-                print("Drawed in \(String(format:"%.3f s",drawingDuration))")
+//                print("\(configuration.numberofSamples)/\(sampling.samples.count)")
+//                print("Sampled in \(String(format:"%.3f s",samplingDuration))")
+//                print("Drawed in \(String(format:"%.3f s",drawingDuration))")
                 
                 self.delegate?.didFinishRendering(identifier: identifier)
             }, onFailure: { (error, identifier) in
@@ -134,7 +157,7 @@ public class WaveForm: UIView {
         let x: CGFloat = 0.0
         let y: CGFloat = 0.0
         let height = self.bounds.size.height
-        let width = self.bounds.size.width * percentage
+        let width = self.bounds.size.width * (percentage / 100.0)
         UIView.animate(withDuration: 0.5) {
             self.clipping.frame = CGRect(x: x, y: y, width: width, height: height)
         }

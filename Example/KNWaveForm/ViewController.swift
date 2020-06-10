@@ -37,3 +37,20 @@ class ViewController: UIViewController {
 
 }
 
+extension ViewController: WaveFormDelegate {
+    func didScrollTo(percentage: CGFloat) {
+        return
+    }
+    
+    func didFinishRendering(identifier: String?) {
+        return
+    }
+    
+    func samplingFailed(error: Error, identifier: String?) {
+        return
+    }
+    
+    
+}
+
+
