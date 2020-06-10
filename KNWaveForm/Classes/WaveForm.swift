@@ -34,7 +34,8 @@ public class WaveForm: UIView {
     
     private var config: WaveformConfiguration?
     
-    private var panGestureRecognizer: UIPanGestureRecognizer!
+    private var panGestureRecognizerIsDetecting = false
+    
     
     lazy var waveformImageView: UIImageView = {
         let imageview = UIImageView(frame: CGRect.zero)
@@ -75,8 +76,8 @@ public class WaveForm: UIView {
         clipsToBounds = true
         
         
-        self.panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
-        self.addGestureRecognizer(self.panGestureRecognizer)
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
+        self.addGestureRecognizer(panGestureRecognizer)
         self.isUserInteractionEnabled = true
     }
     
@@ -88,8 +89,10 @@ public class WaveForm: UIView {
         let percentage = max(min((locationX / width), 1.0), 0.0) * 100.0
         switch recognizer.state {
         case .began, .changed:
-            self.progress(to: percentage)
-        case .ended:
+            self.panGestureRecognizerIsDetecting = true
+            self.animateProgress(to: percentage)
+        case .ended, .cancelled, .failed:
+            self.panGestureRecognizerIsDetecting = false
             self.delegate?.didScrollTo(percentage: percentage)
         default:
             break
@@ -154,6 +157,17 @@ public class WaveForm: UIView {
     }
     
     public func progress(to percentage: CGFloat) {
+        if panGestureRecognizerIsDetecting { return }
+        let x: CGFloat = 0.0
+        let y: CGFloat = 0.0
+        let height = self.bounds.size.height
+        let width = self.bounds.size.width * (percentage / 100.0)
+        UIView.animate(withDuration: 0.5) {
+            self.clipping.frame = CGRect(x: x, y: y, width: width, height: height)
+        }
+    }
+    
+    private func animateProgress(to percentage: CGFloat) {
         let x: CGFloat = 0.0
         let y: CGFloat = 0.0
         let height = self.bounds.size.height

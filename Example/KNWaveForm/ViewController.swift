@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func randomProgress(_ sender: Any) {
-        let random = Double.random(in: 0.0...1.0)
+        let random = Double.random(in: 0.0...100.0)
         self.waveform.progress(to: CGFloat(random))
     }
 
